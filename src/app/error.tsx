@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { BrandLink } from "@/components/brand-mark";
+
 export default function Error({
   error,
   retry,
@@ -13,9 +15,11 @@ export default function Error({
     <div className="min-h-screen bg-white text-ink">
       <header className="border-b border-zinc-200">
         <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
-          <Link href="/" className="text-xl font-semibold">
-            Taskora
-          </Link>
+          <BrandLink
+            href="/"
+            className="flex items-center gap-2.5 text-xl font-semibold text-ink"
+            markClassName="size-7"
+          />
         </div>
       </header>
 

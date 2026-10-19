@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import { BRAND } from "@/lib/brand";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +16,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.APP_URL ?? "http://localhost:3000"),
   title: "Taskora | Project Management Made Simple",
-  description:
-    "Organize workspaces, manage projects, assign tasks, track progress with Kanban boards, and collaborate through task comments.",
+  description: BRAND.description,
+  applicationName: BRAND.name,
+  openGraph: {
+    type: "website",
+    siteName: BRAND.name,
+    title: "Taskora | Project Management Made Simple",
+    description: BRAND.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Taskora | Project Management Made Simple",
+    description: BRAND.description,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: BRAND.colors.mark,
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

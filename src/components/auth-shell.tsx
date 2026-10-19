@@ -1,5 +1,6 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+
+import { BrandLink } from "./brand-mark";
 
 type AuthShellProps = {
   title: string;
@@ -17,12 +18,11 @@ export function AuthShell({
   return (
     <main className="grid min-h-screen bg-white text-ink lg:grid-cols-[0.9fr_1.1fr]">
       <section className="flex min-h-screen flex-col px-6 py-8 sm:px-10 lg:px-14">
-        <Link
+        <BrandLink
           href="/"
-          className="w-fit text-xl font-semibold tracking-tight text-ink"
-        >
-          Taskora
-        </Link>
+          className="flex w-fit items-center gap-2.5 text-xl font-semibold tracking-tight text-ink"
+          markClassName="size-7"
+        />
 
         <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-16">
           <div>

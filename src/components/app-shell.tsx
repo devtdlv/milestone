@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 import type { WorkspaceRole } from "@/generated/prisma/enums";
 import { getInitials } from "@/lib/initials";
 
 import { AppNav, MobileMenu } from "./app-nav";
+import { BrandLink } from "./brand-mark";
 
 type AppShellProps = {
   user: {
@@ -17,28 +16,6 @@ type AppShellProps = {
   };
   children: React.ReactNode;
 };
-
-function Brand() {
-  return (
-    <Link
-      href="/dashboard"
-      className="flex items-center gap-2.5 rounded-md text-base font-semibold text-ink"
-    >
-      <svg aria-hidden="true" viewBox="0 0 32 32" className="size-7">
-        <rect width="32" height="32" rx="7" fill="#18181b" />
-        <path
-          d="M9.5 10.5h13M16 10.5v12"
-          fill="none"
-          stroke="#fff"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-        />
-        <circle cx="23" cy="22.5" r="2.5" fill="#6366f1" />
-      </svg>
-      Taskora
-    </Link>
-  );
-}
 
 function Account({ user }: Pick<AppShellProps, "user">) {
   return (
@@ -78,7 +55,10 @@ export function AppShell({ user, workspace, children }: AppShellProps) {
 
       <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col border-r border-line bg-surface lg:flex">
         <div className="flex h-16 shrink-0 items-center border-b border-line px-6">
-          <Brand />
+          <BrandLink
+            href="/dashboard"
+            className="flex items-center gap-2.5 rounded-md text-base font-semibold text-ink"
+          />
         </div>
 
         <div className="flex-1 overflow-y-auto px-3 py-6">
@@ -92,7 +72,10 @@ export function AppShell({ user, workspace, children }: AppShellProps) {
 
       <header className="sticky top-0 z-30 border-b border-line bg-surface lg:hidden">
         <div className="relative flex h-14 items-center justify-between px-4 sm:px-6">
-          <Brand />
+          <BrandLink
+            href="/dashboard"
+            className="flex items-center gap-2.5 rounded-md text-base font-semibold text-ink"
+          />
 
           <MobileMenu>
             <AppNav workspace={workspace} />
